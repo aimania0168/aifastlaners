@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Fastlaners | Escape the AI Slowlane</title>
+  <style>
+    * {
+      margin: 0; 
+      padding: 0; 
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #16213e 100%);
+      color: white;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* Animated background particles */
+    .bg-particles {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      overflow: hidden;
+    }
+
+    .particle {
+      position: absolute;
+      width: 3px;
+      height: 3px;
+      background: rgba(0, 255, 195, 0.3);
+      border-radius: 50%;
+      animation: float 6s infinite linear;
+    }
+
+    @keyframes float {
+      0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+      10% { opacity: 1; }
+      90% { opacity: 1; }
+      100% { transform: translateY(-100px) rotate(360deg); opacity: 0; }
+    }
+
+    /* Hero Section with Millionaire Fastlane Road Background */
+    header {
+      position: relative;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 2rem;
+      background: 
+        linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.7)),
+        url('https://images.unsplash.com/photo-1449824913935-59a10b8d2000?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80') center/cover;
+      overflow: hidden;
+    }
+
+    .logo-container {
+      position: absolute;
+      top: 2rem;
+      left: 2rem;
+      z-index: 10;
+    }
+
+    .main-logo {
+      width: 180px;
+      height: 60px;
+      border-radius: 8px;
+      transition: transform 0.3s ease;
+      filter: drop-shadow(0 10px 20px rgba(0, 255, 195, 0.3));
+    }
+
+    .main-logo:hover {
+      transform: scale(1.05);
+      filter: drop-shadow(0 15px 30px rgba(0, 255, 195, 0.5));
+    }
+
+    .hero-robot {
+      width: 200px;
+      height: 200px;
+      margin-bottom: 2rem;
+      background: linear-gradient(45deg, #00ffc3, #00d4ff);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 4rem;
+      animation: robotFloat 3s ease-in-out infinite;
+      box-shadow: 0 0 50px rgba(0, 255, 195, 0.5);
+      position: relative;
+    }
+
+    .hero-robot::before {
+      content: '🤖💰';
+      font-size: 3rem;
+    }
+
+    @keyframes robotFloat {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-20px); }
+    }
+
+    header h1 {
+      font-size: clamp(2.5rem, 6vw, 5rem);
+      font-weight: 900;
+      background: linear-gradient(45deg, #00ffc3, #ffd700, #ff6b6b);
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 1.5rem;
+      animation: slideInUp 1s ease-out;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    }
+
+    .subtitle {
+      font-size: clamp(1.1rem, 3vw, 1.6rem);
+      color: #fff;
+      margin-bottom: 3rem;
+      max-width: 700px;
+      animation: slideInUp 1s ease-out 0.2s both;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+      font-weight: 400;
+      line-height: 1.4;
+    }
+
+    @keyframes slideInUp {
+      from { opacity: 0; transform: translateY(50px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .cta-primary {
+      display: inline-block;
+      padding: 1rem 2.5rem;
+      background: linear-gradient(45deg, #00ffc3, #00d4ff);
+      color: #000;
+      font-weight: 700;
+      font-size: 1.1rem;
+      border: none;
+      border-radius: 50px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      box-shadow: 0 10px 30px rgba(0, 255, 195, 0.3);
+      animation: slideInUp 1s ease-out 0.4s both;
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+    }
+
+    .cta-primary::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+      transition: left 0.5s;
+    }
+
+    .cta-primary:hover::before {
+      left: 100%;
+    }
+
+    .cta-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 15px 40px rgba(0, 255, 195, 0.5);
+    }
+
+    .section {
+      padding: 5rem 2rem;
+      text-align: center;
+      position: relative;
+    }
+
+    .section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 50%;
+      width: 1px;
+      height: 50px;
+      background: linear-gradient(to bottom, transparent, #00ffc3);
+      transform: translateX(-50%);
+    }
+
+    .section h2 {
+      font-size: clamp(1.8rem, 4vw, 2.5rem);
+      margin-bottom: 1.5rem;
+      background: linear-gradient(45deg, #fff, #00ffc3);
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-weight: 700;
+    }
+
+    .section p {
+      color: #bbb;
+      margin-bottom: 2rem;
+      font-size: 1.1rem;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .feature-card {
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(0, 255, 195, 0.2);
+      border-radius: 20px;
+      padding: 2.5rem;
+      margin: 2rem auto;
+      max-width: 600px;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .feature-card::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: conic-gradient(transparent, rgba(0, 255, 195, 0.1), transparent 30%);
+      animation: rotate 4s linear infinite;
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    .feature-card:hover::before {
+      opacity: 1;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-10px);
+      border-color: rgba(0, 255, 195, 0.5);
+      box-shadow: 0 20px 40px rgba(0, 255, 195, 0.2);
+    }
+
+    @keyframes rotate {
+      100% { transform: rotate(360deg); }
+    }
+
+    .icon {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      display: block;
+    }
+
+    .btn-secondary {
+      display: inline-block;
+      padding: 0.75rem 2rem;
+      background: transparent;
+      color: #00ffc3;
+      font-weight: 600;
+      border: 2px solid #00ffc3;
+      border-radius: 50px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      margin-top: 1rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .btn-secondary:hover {
+      background: #00ffc3;
+      color: #000;
+      transform: translateY(-2px);
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2rem;
+      margin: 3rem auto;
+      max-width: 800px;
+    }
+
+    .stat {
+      text-align: center;
+    }
+
+    .stat-number {
+      font-size: 2.5rem;
+      font-weight: 800;
+      color: #00ffc3;
+      display: block;
+    }
+
+    .stat-label {
+      color: #ccc;
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .free-badge {
+      background: linear-gradient(45deg, #ff6b6b, #ffd93d);
+      color: #000;
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      font-weight: 700;
+      font-size: 0.9rem;
+      display: inline-block;
+      margin-bottom: 1rem;
+      animation: pulse 2s infinite;
+    }
+
+    .discord-features {
+      text-align: left;
+      max-width: 500px;
+      margin: 2rem auto;
+      background: rgba(0, 0, 0, 0.2);
+      padding: 2rem;
+      border-radius: 15px;
+      border-left: 4px solid #00ffc3;
+    }
+
+    .discord-features ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .discord-features li {
+      color: #ddd;
+      margin-bottom: 0.8rem;
+      padding-left: 1.5rem;
+      position: relative;
+      font-size: 1rem;
+      line-height: 1.5;
+    }
+
+    .discord-features li::before {
+      content: '✅';
+      position: absolute;
+      left: 0;
+      color: #00ffc3;
+    }
+
+    .mj-demarco-mention {
+      background: rgba(255, 107, 107, 0.1);
+      border: 1px solid rgba(255, 107, 107, 0.3);
+      border-radius: 10px;
+      padding: 1rem;
+      margin: 1.5rem auto;
+      max-width: 500px;
+    }
+
+    .mj-demarco-mention p {
+      color: #ff6b6b;
+      font-weight: 600;
+      margin: 0;
+      font-size: 1rem;
+    }
+
+    footer {
+      background: linear-gradient(45deg, #0a0a0a, #1a1a2e);
+      color: #666;
+      text-align: center;
+      padding: 2rem;
+      border-top: 1px solid rgba(0, 255, 195, 0.2);
+    }
+
+    .scroll-indicator {
+      position: absolute;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      animation: bounce 2s infinite;
+    }
+
+    @keyframes bounce {
+      0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
+      40% { transform: translateX(-50%) translateY(-10px); }
+      60% { transform: translateX(-50%) translateY(-5px); }
+    }
+
+    /* Mobile optimizations */
+    @media (max-width: 768px) {
+      .section { padding: 3rem 1rem; }
+      .feature-card { margin: 1rem; padding: 2rem; }
+      .stats { grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+      .logo-container { top: 1rem; left: 1rem; }
+      .main-logo { width: 60px; height: 60px; }
+      .hero-robot { width: 150px; height: 150px; }
+      .discord-features { text-align: center; }
+    }
+
+    /* Smooth scrolling */
+    html { scroll-behavior: smooth; }
+
+    /* Intersection Observer Animation */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.8s ease-out;
+    }
+
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+    }
+  </style>
+</head>
+<body>
+  <!-- Animated background particles -->
+  <div class="bg-particles" id="particles"></div>
+
+  <header>
+    <!-- Logo Container -->
+    <div class="logo-container">
+      <svg width="100" height="100" viewBox="0 0 200 100" class="main-logo">
+        <rect x="10" y="10" width="30" height="30" rx="8" fill="none" stroke="white" stroke-width="2"/>
+        <text x="25" y="30" fill="white" font-family="Arial, sans-serif" font-weight="bold" font-size="12" text-anchor="middle">AI</text>
+        <text x="60" y="30" fill="white" font-family="Arial, sans-serif" font-weight="bold" font-size="16">AI FASTLANERS</text>
+      </svg>
+    </div>
+
+    <!-- Robot with Money Bag on Fastlane Road -->
+    <div class="hero-robot"></div>
+    
+    <h1>Stop Trading Your Life for a Paycheck</h1>
+    <p class="subtitle">Tired of the 9-5 grind? Sick of making other people rich while you struggle paycheck to paycheck? It's time to break free. Discover how ordinary people are using AI to build passive income streams that work while they sleep. No more begging for raises. No more asking for time off. Just financial freedom and the life you've always dreamed of.</p>
+    
+    <div class="scroll-indicator">
+      <div style="color: #00ffc3; font-size: 1.5rem;">↓</div>
+    </div>
+  </header>
+
+  <section class="section fade-in" id="optin">
+    <div class="feature-card">
+      <div class="free-badge">💯 100% FREE</div>
+      <span class="icon">📊</span>
+      <h2>200+ AI Money-Making Methods</h2>
+      <p><strong>Get instant access to our comprehensive spreadsheet with proven strategies, tools, and techniques to generate income using AI.</strong> These 200+ ways to make money with AI are completely FREE and have already been downloaded by over 10,000 people who are now building their AI-powered income streams!</p>
+      
+      <div class="stats">
+        <div class="stat">
+          <span class="stat-number">200+</span>
+          <span class="stat-label">FREE Methods</span>
+        </div>
+        <div class="stat">
+          <span class="stat-number">10K+</span>
+          <span class="stat-label">Downloads</span>
+        </div>
+      </div>
+      
+      <a href="https://docs.google.com/spreadsheets/d/19rrBg-H7IOOnK58IAfLwijqCxlM2AZLTOLFf60QQ7cc/htmlview?usp=sharing" class="btn-secondary" target="_blank">Access Free Spreadsheet</a>
+    </div>
+  </section>
+
+  <section class="section fade-in">
+    <div class="feature-card">
+      <span class="icon">💎</span>
+      <h2>AI Wealth Blueprint</h2>
+      
+      <div class="mj-demarco-mention">
+        <p>📚 Heavily Inspired by MJ DeMarco, Author of "The Millionaire Fastlane"</p>
+      </div>
+      
+      <p><strong>The complete roadmap to go from broke to building real online wealth using AI.</strong> These strategies are designed to help you escape the traditional "slowlane" and build sustainable wealth streams through the power of Artificial Intelligence. From beginner to advanced techniques, everything you need to fast-track your financial freedom is inside.</p>
+      
+      <div class="stats">
+        <div class="stat">
+          <span class="stat-number">100+</span>
+          <span class="stat-label">Pages</span>
+        </div>
+        <div class="stat">
+          <span class="stat-number">4.9★</span>
+          <span class="stat-label">Rating</span>
+        </div>
+      </div>
+      
+      <a href="https://fibonacciretrace.gumroad.com/l/qleeqd" class="btn-secondary" target="_blank">Get Blueprint Now</a>
+    </div>
+  </section>
+
+  <section class="section fade-in">
+    <div class="feature-card">
+      <span class="icon">🎮</span>
+      <h2>Elite AI Community (Discord)</h2>
+      <p><strong>Connect with like-minded entrepreneurs, share strategies, get feedback, and accelerate your growth in our private Discord community.</strong></p>
+      
+      <div class="discord-features">
+        <h3 style="color: #00ffc3; margin-bottom: 1.5rem; text-align: center;">Inside this exclusive Discord, I'll show you how to:</h3>
+        <ul>
+          <li>Build automated online businesses with AI</li>
+          <li>Run faceless YouTube channels with AI scripts & voices</li>
+          <li>Grow Instagram theme pages using smart tools</li>
+          <li>Launch AI-powered websites & SaaS projects</li>
+          <li>Manage social media with AI (client-ready strategies)</li>
+          <li>Trade smarter using AI-based tools</li>
+          <li>Get into affiliate marketing the AI way</li>
+          <li>Learn AI automation & consulting</li>
+          <li><strong>AND — even if you don't know what AI is yet — you'll learn Artificial Intelligence from scratch, made super beginner-friendly.</strong></li>
+        </ul>
+      </div>
+      
+      <div class="stats">
+        <div class="stat">
+          <span class="stat-number">5K+</span>
+          <span class="stat-label">Members</span>
+        </div>
+        <div class="stat">
+          <span class="stat-number">24/7</span>
+          <span class="stat-label">Support</span>
+        </div>
+      </div>
+      
+      <a href="https://www.launchpass.com/ai-fastlaners/ai-wealth" class="btn-secondary" target="_blank">Join Discord Community</a>
+    </div>
+  </section>
+
+  <!-- Newsletter Section -->
+  <section class="section fade-in">
+    <div class="feature-card">
+      <span class="icon">🧠</span>
+      <h2>Stay Ahead of the AI Game</h2>
+      <p>Get exclusive AI insights, strategies, and opportunities delivered straight to your inbox. Join thousands of entrepreneurs who stay updated with the latest AI wealth-building techniques.</p>
+      
+      <div class="stats">
+        <div class="stat">
+          <span class="stat-number">Weekly</span>
+          <span class="stat-label">Updates</span>
+        </div>
+        <div class="stat">
+          <span class="stat-number">Exclusive</span>
+          <span class="stat-label">Content</span>
+        </div>
+      </div>
+      
+      <a href="https://williams-newsletter-50342d.beehiiv.com/subscribe" class="btn-secondary" target="_blank">Subscribe to Newsletter</a>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2025 AI Fastlaners. Built for entrepreneurs in the AI fastlane 🚀</p>
+    <p style="margin-top: 0.5rem; font-size: 0.8rem;">Your journey to AI wealth starts here.</p>
+  </footer>
+
+  <script>
+    // Create floating particles
+    function createParticles() {
+      const particlesContainer = document.getElementById('particles');
+      const particleCount = 50;
+
+      for (let i = 0; i < particleCount; i++) {
+        const particle = document.createElement('div');
+        particle.className = 'particle';
+        particle.style.left = Math.random() * 100 + '%';
+        particle.style.animationDelay = Math.random() * 6 + 's';
+        particle.style.animationDuration = (Math.random() * 3 + 3) + 's';
+        particlesContainer.appendChild(particle);
+      }
+    }
+
+    // Intersection Observer for fade-in animations
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, observerOptions);
+
+    // Observe all fade-in elements
+    document.querySelectorAll('.fade-in').forEach(el => {
+      observer.observe(el);
+    });
+
+    // Logo is now implemented as SVG - no error handling needed
+    // The Start Your Journey button has been removed from the hero section
+
+    // Initialize particles
+    createParticles();
+
+    // Add some interactive hover effects
+    document.querySelectorAll('.feature-card').forEach(card => {
+      card.addEventListener('mousemove', (e) => {
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        
+        card.style.setProperty('--mouse-x', x + 'px');
+        card.style.setProperty('--mouse-y', y + 'px');
+      });
+    });
+  </script>
+</body>
+</html>
