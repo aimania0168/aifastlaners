@@ -310,47 +310,65 @@
   <!-- Community Section -->
   <section class="section fade-in">
     <div class="section-card">
-      <h2 class="section-title">JOIN AIFASTLANERS</h2>
-      <p style="text-align: center; font-size: 1.2rem; color: #b0b0b0; margin-bottom: 2rem;">(Private Discord Community)</p>
+      <h2 class="section-title">🚀 JOIN AIFASTLANERS</h2>
+      <p style="text-align: center; font-size: 1.2rem; color: #b0b0b0; margin-bottom: 2rem;">Your AI Business Launchpad: Get Ideas, News, and Clear Roadmaps</p>
       
       <p style="text-align: center; font-size: 1.2rem; color: #e0e0e0; margin-bottom: 2rem;">
-        Need real support? Join our Discord for step-by-step help, feedback, and private training.
+        Stop feeling lost. We deliver the actionable ideas, breaking AI news, and step-by-step roadmaps you need to build a real income—whether you're a complete beginner or a pro scaling up.
       </p>
       
       <p style="text-align: center; font-size: 1.1rem; color: #00ff88; margin-bottom: 2rem; font-weight: 600;">
-        You'll learn how to:
+        We Provide the Clarity You Need:
       </p>
       
       <div class="community-features">
-        <div class="feature-item">💡 AI Fundamentals (no experience needed)</div>
-        <div class="feature-item">📊 AI Trading Tools & Automation</div>
-        <div class="feature-item">🌐 AI Website & SaaS Building (no-code tools)</div>
-        <div class="feature-item">👨‍💻 Vibe Coding (fun, pressure-free learning)</div>
-        <div class="feature-item">🧠 Prompt Engineering & Context Mastery</div>
-        <div class="feature-item">🎥 Faceless YouTube Channel Automation</div>
-        <div class="feature-item">💼 AI Freelancing & Client Services</div>
-        <div class="feature-item">🏢 AI Automation Agencies & B2B models</div>
-        <div class="feature-item">📱 AI Social Growth (IG/TikTok with smart tools)</div>
-        <div class="feature-item">💰 AI Affiliate Marketing (content that sells 24/7)</div>
+        <div class="feature-item">📈 The Ideas: Daily actionable ideas for AI businesses, niches, and content.</div>
+        <div class="feature-item">🔔 The News: Curated updates on AI tools and trends that actually matter.</div>
+        <div class="feature-item">🗺️ The Roadmaps: Clear, step-by-step paths for every hustle. No guesswork.</div>
       </div>
       
-      <div style="text-align: center; margin-top: 2rem;">
-        <a href="https://www.launchpass.com/ai-fastlaners/ai-wealth" class="btn-primary" target="_blank">🚀 Join Community</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- Newsletter Section -->
-  <section class="section fade-in">
-    <div class="section-card">
-      <h2 class="section-title">📬 Stay Ahead with AI Money-Making Secrets</h2>
-      
-      <p class="newsletter-text">
-        AI is evolving fast. Don't fall behind. Get weekly updates on AI tools, beginner-friendly business ideas, and case studies.
+      <p style="text-align: center; font-size: 1.1rem; color: #00ff88; margin-bottom: 2rem; font-weight: 600;">
+        Your All-Access Roadmaps Include:
       </p>
       
-      <div style="text-align: center;">
-        <a href="https://williams-newsletter-50342d.beehiiv.com/subscribe" class="btn-secondary" target="_blank">📩 Subscribe Free</a>
+      <div class="community-features">
+        <div class="feature-item">✔️ AI Fundamentals Roadmap (Start from zero)</div>
+        <div class="feature-item">✔️ AI Trading & Automation Roadmap</div>
+        <div class="feature-item">✔️ AI Website & SaaS Roadmap (No-code vibe coding)</div>
+        <div class="feature-item">✔️ Prompt Engineering & Context Mastery Roadmap</div>
+        <div class="feature-item">✔️ Faceless YouTube Automation Roadmap</div>
+        <div class="feature-item">✔️ AI Freelancing & Client Getting Roadmap</div>
+        <div class="feature-item">✔️ AI Automation Agency Roadmap (B2B models)</div>
+        <div class="feature-item">✔️ AI Social Growth Roadmap (IG/TikTok)</div>
+        <div class="feature-item">✔️ AI Affiliate Marketing Roadmap</div>
+        <div class="feature-item">✔️ AI Agent Creation (For businesses)</div>
+      </div>
+      
+      <p style="text-align: center; font-size: 1.1rem; color: #00ff88; margin-bottom: 2rem; font-weight: 600;">
+        You’ll Also Get:
+      </p>
+      
+      <div class="community-features">
+        <div class="feature-item">• Weekly AI News Roundups — What happened & what it means for you</div>
+        <div class="feature-item">• Live Roadmap Walkthroughs — We build and refine strategies together</div>
+        <div class="feature-item">• Idea-Sharing Channels — Pitch concepts and get feedback</div>
+        <div class="feature-item">• Tool & Tutorial Library — Always-updated resources</div>
+      </div>
+      
+      <!-- Updated Button Section -->
+      <div style="text-align: center; margin-top: 2rem;">
+        <div id="newsletter-form">
+          <p style="color: #00ff88; margin-bottom: 1rem;">Get FREE AI Business Ideas + Discord Access</p>
+          <input type="email" id="email-input" placeholder="Enter your email" style="padding: 12px; width: 80%; max-width: 300px; border-radius: 25px; border: none; margin-bottom: 1rem; background: rgba(255,255,255,0.1); color: white;">
+          <br>
+          <button onclick="submitEmail()" class="btn-primary">Get Instant Access</button>
+        </div>
+        
+        <div id="thank-you-message" style="display: none;">
+          <p style="color: #00ff88; margin-bottom: 1rem;">✅ Check your email for the "AI Business Ideas" Google Doc!</p>
+          <a href="https://discord.gg/UFP6ZajR" class="btn-primary" target="_blank">Join Discord Community Now</a>
+          <p style="margin-top: 1rem; font-size: 0.9rem; color: #b0b0b0;">Also check your inbox for your free resource: <a href="https://da.gd/AIideas" target="_blank" style="color: #00d4ff;">AI Business Ideas</a></p>
+        </div>
       </div>
     </div>
   </section>
@@ -463,6 +481,23 @@
 
     // Initialize particles
     createFloatingParticles();
+
+    function submitEmail() {
+      const email = document.getElementById('email-input').value;
+      if (email && email.includes('@')) {
+        // In a real implementation, you would send this to your email service
+        console.log('Email captured:', email);
+        
+        // Show thank you message
+        document.getElementById('newsletter-form').style.display = 'none';
+        document.getElementById('thank-you-message').style.display = 'block';
+        
+        // Here you would typically send the data to your email service
+        // For example: fetch('your-email-service-endpoint', { method: 'POST', body: JSON.stringify({ email }) });
+      } else {
+        alert('Please enter a valid email address');
+      }
+    }
   </script>
 
 </body>
